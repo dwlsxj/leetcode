@@ -31,8 +31,8 @@ import java.util.Map;
 public class LeetCode02 {
     public static void main(String[] args) {
         ListNode listNode1 = new ListNode(2, new ListNode(4, new ListNode(3)));
-        ListNode listNode2 = new ListNode(5, new ListNode(6, new ListNode(7)));
-        System.out.println(addTwoNumbers(listNode1, listNode2));
+        ListNode listNode2 = new ListNode(5, new ListNode(6, new ListNode(4)));
+        System.out.println(addTwoNumbers2(listNode1, listNode2));
     }
 
     /**
@@ -177,5 +177,42 @@ public class LeetCode02 {
                     '}';
         }
     }
+
+
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        int jinwei = 0;
+        ListNode head = null;
+        ListNode tail = null;
+        while (l1 != null || l2 != null) {
+            int value1 = 0;
+            int value2 = 0;
+            if (l1 != null) {
+                value1 = l1.val;
+            }
+            if (l2 != null) {
+                value2 = l2.val;
+            }
+            int sum = value1 + value2 + jinwei;
+            jinwei = sum / 10;
+
+            if (head == null) {
+                head = tail = new ListNode(sum % 10);
+            } else {
+                tail.next = new ListNode(sum % 10);
+                tail = tail.next;
+            }
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        if (jinwei != 0) {
+            tail.next = new ListNode(jinwei);
+        }
+        return head;
+    }
+
 
 }

@@ -1,7 +1,7 @@
 package cn.battleheart.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 3. 无重复字符的最长子串
@@ -30,44 +30,49 @@ import java.util.List;
  */
 public class LeetCode03 {
     public static void main(String[] args) {
-//        System.out.println(lengthOfLongestSubstring("abcabcbb"));
-//        System.out.println(lengthOfLongestSubstring("bbbbb"));
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring1("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring1("bbbbb"));
+        System.out.println(lengthOfLongestSubstring1("pwwkew"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
-        int maxlength = 0;
-        int add = 0;
-        List<String> strings = new ArrayList<>();
-        for (int i = 0; i < chars.length; i++) {
-            boolean chongfu = false;
-            char aChar = chars[i];
-            char nextChar = chars[i + 1];
-            // 校验是否重复。
-            for (String s1 : strings) {
-                char[] chars1 = s1.toCharArray();
-                char c = chars1[0];
-                if (aChar == c) {
-                    chongfu = true;
-                }
-            }
-            if (i + 1 < chars.length) {
-                int r = aChar ^ nextChar;
-                if (r != 0 && !chongfu) {
-                    // 将元素添加到非重复元素集合中。
-                    strings.add(new String(new char[]{aChar}));
-                    add = add + 1;
-                } else {
+        Set<Character> characters = new HashSet<>();
+        // 左侧索引
+        int rk = -1;
+        int maxLength = 0;
 
-                }
-            } else {
-                //最后一个元素。
-                if (!chongfu) {
-                    add += 1;
-                }
+        int length = chars.length;
+        for (int i = 0; i < length; i++) {
+            if (i != 0) {
+                characters.remove(chars[i - 1]);
             }
+            while (rk + 1 < length && !characters.contains(chars[rk + 1])) {
+                characters.add(chars[rk + 1]);
+                ++rk;
+            }
+            maxLength = Math.max(maxLength, rk - i + 1);
         }
-        return 0;
+        return maxLength;
     }
+
+
+    public static int lengthOfLongestSubstring1(String s) {
+        Set<Character> characters = new HashSet<>();
+        int maxLengths = 0;
+        int rk = -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (i != 0) {
+                characters.remove(s.charAt(i - 1));
+            }
+            while (rk + 1 < s.length() && !characters.contains(s.charAt(rk + 1))) {
+                characters.add(s.charAt(rk + 1));
+                ++rk;
+            }
+            maxLengths = Math.max(maxLengths, rk - i + 1);
+        }
+        return maxLengths;
+    }
+
+
 }
