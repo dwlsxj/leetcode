@@ -17,8 +17,9 @@ public class LeetCode283 {
     public static void main(String[] args) {
         int[] nums = new int[]{0, 1, 0, 3, 12};
         int[] nums1 = new int[]{2, 1};
-        moveZeroes(nums1);
-        moveZeroes(nums);
+        moveZeroes3(nums1);
+        System.out.println("-------------------");
+        moveZeroes3(nums);
     }
 
     public static void moveZeroes(int[] nums) {
@@ -49,6 +50,44 @@ public class LeetCode283 {
 
                 }
             }
+        }
+    }
+
+
+    public static void moveZeroes2(int[] nums) {
+
+        // 非0的队尾。
+        int j = 0;
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] != 0) {
+                int num = nums[j];
+                nums[j] = nums[i];
+                nums[i] = num;
+                j++;
+            }
+            i++;
+        }
+        for (int k = 0; k < nums.length; k++) {
+            System.out.println(nums[k]);
+        }
+    }
+
+
+    public static void moveZeroes3(int[] nums) {
+        int left = 0;
+        int right = 0;
+        while (right < nums.length) {
+            if (nums[right] != 0) {
+                int leftValue = nums[left];
+                nums[left] = nums[right];
+                nums[right] = leftValue;
+                left++;
+            }
+            right++;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            System.out.println(nums[i]);
         }
     }
 
