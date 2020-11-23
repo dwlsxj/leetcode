@@ -1,11 +1,5 @@
 package cn.battleheart.leetcode;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * 5. 最长回文子串
  * 含义:正向和反向是一样的字符串。

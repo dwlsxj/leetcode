@@ -1,9 +1,7 @@
 package cn.battleheart.leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 2. 两数相加。
