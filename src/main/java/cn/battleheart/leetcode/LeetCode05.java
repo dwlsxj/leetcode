@@ -21,6 +21,8 @@ public class LeetCode05 {
         System.out.println(longestPalindrome("cbbd"));
         System.out.println(longestPalindrome("asddsaasdasdasdasd"));
         System.out.println(longestPalindrome("babad"));
+        System.out.println(longestPalindrome("a"));
+        System.out.println(longestPalindrome("ac"));
     }
 
     /**
@@ -32,8 +34,11 @@ public class LeetCode05 {
      * @return 返回最大回文子串。
      */
     public static String longestPalindrome(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
         int length = s.length();
-        int maxLength = 0;
+        int maxLength = 1;
         int startIndex = 0;
         int j = 0;
         for (int i = 0; i < s.length(); i++) {
