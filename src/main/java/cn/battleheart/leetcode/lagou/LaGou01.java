@@ -20,7 +20,7 @@ public class LaGou01 {
      * 2. 如果当前值小于最大值大于第二大值，则将第二大值修改为最新i值。
      *
      * @param nums 数组。
-     * @return
+     * @return 返回第二大的数字。
      */
     private static int sencondMax(int[] nums) {
         if (nums == null || nums.length < 1) {
@@ -29,8 +29,8 @@ public class LaGou01 {
         if (nums.length == 1) {
             return nums[0];
         }
-        int firstMax = 0;
-        int sencondMax = 0;
+        int firstMax = Integer.MIN_VALUE;
+        int sencondMax = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > firstMax) {
                 sencondMax = firstMax;

@@ -35,6 +35,12 @@ public class LeetCode03 {
         System.out.println(lengthOfLongestSubstring1("pwwkew"));
     }
 
+    /**
+     * 滑动窗口的方式进行解决问题。
+     *
+     * @param s
+     * @return
+     */
     public static int lengthOfLongestSubstring(String s) {
         char[] chars = s.toCharArray();
         Set<Character> characters = new HashSet<>();
