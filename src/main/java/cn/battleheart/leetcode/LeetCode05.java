@@ -108,19 +108,19 @@ public class LeetCode05 {
         if (s.length() < 2) {
             return s;
         }
-        int endIndex = 0;
+        int maxLength = 1;
         int startIndex = 0;
         for (int i = 0; i < s.length(); i++) {
             int len1 = expandAroundCenter(i, i, s);
             int len2 = expandAroundCenter(i, i + 1, s);
             int len = Math.max(len1, len2);
-            if (endIndex - startIndex + 1 < len) {
-                startIndex = i - (len - 1) / 2;
-                endIndex = i + len / 2;
+            if (len > maxLength) {
+                maxLength = len;
+                startIndex = i - (len - 1)/2
+                ;
             }
         }
-        return s.substring(startIndex, endIndex + 1);
-
+        return s.substring(startIndex, startIndex + maxLength);
     }
 
     /**

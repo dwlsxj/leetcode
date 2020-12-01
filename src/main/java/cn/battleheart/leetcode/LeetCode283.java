@@ -73,7 +73,10 @@ public class LeetCode283 {
         }
     }
 
-
+    /**
+     * 慢双指针。
+     * @param nums
+     */
     public static void moveZeroes3(int[] nums) {
         int left = 0;
         int right = 0;
