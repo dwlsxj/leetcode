@@ -1,5 +1,7 @@
 package cn.battleheart.leetcode;
 
+import java.nio.charset.Charset;
+
 /**
  * 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
  * <p>
@@ -34,13 +36,52 @@ package cn.battleheart.leetcode;
  */
 public class LeetCode06 {
 
-    public String convert(String s, int numRows) {
-
-        return "";
+    /**
+     * 解题思路：通过记录所有行的内容，然后再根据所有行的内容拼接语句。并且按照Z的形式标记每个字符出现的行。
+     *
+     * @param s       字符串。
+     * @param numRows 行数。
+     * @return
+     */
+    public static String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        int size = Math.min(numRows, s.length());
+        String[] rows = new String[size];
+        //设置为空。
+        for (int i = 0; i < rows.length; i++) {
+            rows[i] = "";
+        }
+        boolean down = true;
+        boolean up = false;
+        int rowIndex = 0;
+        for (int i = 0; i < s.length(); i++) {
+            rows[rowIndex] = rows[rowIndex] + s.charAt(i);
+            if (rowIndex == size - 1) {
+                up = true;
+                down = false;
+            }
+            if (rowIndex == 0) {
+                up = false;
+                down = true;
+            }
+            if (down) {
+                rowIndex++;
+            }
+            if (up) {
+                rowIndex--;
+            }
+        }
+        String ss = "";
+        for (int i = 0; i < rows.length; i++) {
+            ss = ss + rows[i];
+        }
+        return ss;
     }
 
 
     public static void main(String[] args) {
-
+        System.out.println(convert("LEETCODEISHIRING", 2));
     }
 }
