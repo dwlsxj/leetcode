@@ -116,8 +116,7 @@ public class LeetCode05 {
             int len = Math.max(len1, len2);
             if (len > maxLength) {
                 maxLength = len;
-                startIndex = i - (len - 1)/2
-                ;
+                startIndex = i - (len - 1)/2;
             }
         }
         return s.substring(startIndex, startIndex + maxLength);
