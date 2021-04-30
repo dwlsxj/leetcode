@@ -1,7 +1,5 @@
 package cn.battleheart.leetcode;
 
-import org.w3c.dom.Node;
-
 /**
  * LRU算法。
  * LRU（Least Recently Used，最近最少使用）算法根据页面的历史请求记录来进行淘汰页面，
